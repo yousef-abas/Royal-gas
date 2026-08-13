@@ -30,9 +30,9 @@
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         }
         .hero-logo {
-            width: 250px;
+            width: 280px;
             max-width: 80%;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             background: white;
             padding: 15px;
             border-radius: 20px;
@@ -75,7 +75,7 @@
 
     <!-- الشاشة الافتتاحية مع اللوجو وتأثير الانقسام -->
     <div class="hero" id="landing">
-        <img src="https://i.imgur.com/G3e3f7g.jpg" alt="Royal Gas Logo" class="hero-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'100\'><text x=\'10\' y=\'50\' fill=\'navy\' font-size=\'24\'>ROYAL GAS</text></svg>'">
+        <img src="https://i.ibb.co/3069356/logo.jpg" alt="Royal Gas Logo" class="hero-logo" onerror="this.src='https://i.imgur.com/359020260.jpg'">
         <h1 style="font-size: 2rem; margin-bottom: 30px;">الهيكل التنظيمي للشركة</h1>
         <button onclick="start()">استعرض الأقسام الآن</button>
     </div>
@@ -103,7 +103,7 @@
             <h2 id="modal-title" style="color: var(--main); margin-top: 0;"></h2>
             <p id="modal-manager" style="font-weight: bold; color: var(--red); font-size: 1.2rem;"></p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-            <p id="modal-body" style="font-size: 1.1rem; line-height: 1.8; color: #444;"></p>
+            <p id="modal-body" style="font-size: 1.1.rem; line-height: 1.8; color: #444;"></p>
         </div>
     </div>
 
@@ -114,7 +114,7 @@
             setTimeout(() => {
                 landing.style.display = 'none'; 
                 document.getElementById('departments').style.display = 'block'; 
-            }, 1000); // إخفاء العنصر تماماً بعد انتهاء حركة الانقسام
+            }, 1000);
         }
         
         function openModal(title, manager, body) { 
