@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رويال جاس - الهيكل التنظيمي</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
+        :root { --primary: #003366; --accent: #d32f2f; --bg: #fdfdfd; }
+        
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding: 0; color: #333; }
+        
+        /* صفحة الترحيب */
+        #landing { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; transition: 0.5s; }
+        .logo { width: 250px; margin-bottom: 20px; animation: fadeIn 2s; }
+        .btn { padding: 15px 40px; background: var(--primary); color: white; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+        .btn:hover { background: var(--accent); transform: scale(1.1); }
+        
+        /* المحتوى الرئيسي */
+        #main-content { display: none; padding: 40px; max-width: 800px; margin: auto; animation: fadeIn 1s; }
+        .dept-logo { width: 120px; margin-bottom: 20px; }
+        .dept { margin-bottom: 20px; padding: 20px; background: white; border-right: 5px solid var(--accent); box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 10px; }
+        .dept button { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        .hidden { display: none; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <!-- Landing Page -->
+    <div id="landing">
+        <img src="https://i.imgur.com/your-logo-url.png" alt="Royal Gas Logo" class="logo"> <!-- ضع رابط اللوجو هنا -->
+        <h1>مرحباً بك في شركة رويال جاس</h1>
+        <p>نقدم لكم نظرة شاملة على الهيكل التنظيمي للشركة</p>
+        <button class="btn" onclick="showContent()">ابدأ الاستكشاف</button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <img src="https://i.imgur.com/your-logo-url.png" alt="Royal Gas Logo" class="dept-logo">
+        <h1>الهيكل التنظيمي للأقسام</h1>
+        
+        <div class="dept">
+            <h2>قسم العمليات (Operations)</h2>
+            <button onclick="toggleDetails('ops')">إظهار التفاصيل</button>
+            <ul id="ops" class="hidden">
+                <li>التصنيع والدهانات</li><li>الصيانة</li><li>الطباعة</li><li>القوالب</li>
+            </ul>
+        </div>
+        
+        <div class="dept">
+            <h2>قسم سلسلة الإمداد (Supply Chain)</h2>
+            <button onclick="toggleDetails('supply')">إظهار التفاصيل</button>
+            <ul id="supply" class="hidden">
+                <li>المشتريات</li><li>المخازن</li><li>اللوجستيات</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showContent() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+        function toggleDetails(id) {
+            let el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
