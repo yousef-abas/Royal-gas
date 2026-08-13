@@ -2,72 +2,68 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رويال جاس - الهيكل التنظيمي</title>
+    <title>رويال جاس - الهيكل التنظيمي الاحترافي</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&display=swap');
+        :root { --main: #003366; --red: #d32f2f; --white: #ffffff; }
+        body { font-family: 'Cairo', sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
         
-        :root { --primary: #003366; --accent: #d32f2f; --bg: #fdfdfd; }
+        /* المقدمة */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, var(--main), #001a33); color: white; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero button { padding: 20px 60px; font-size: 1.5rem; background: var(--red); color: white; border: none; border-radius: 50px; cursor: pointer; transition: 0.4s; }
+        .hero button:hover { transform: scale(1.1); box-shadow: 0 10px 20px rgba(211,47,47,0.4); }
+
+        /* منطقة الأقسام */
+        #departments { display: none; padding: 50px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
         
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding: 0; color: #333; }
-        
-        /* صفحة الترحيب */
-        #landing { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; transition: 0.5s; }
-        .logo { width: 250px; margin-bottom: 20px; animation: fadeIn 2s; }
-        .btn { padding: 15px 40px; background: var(--primary); color: white; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: var(--accent); transform: scale(1.1); }
-        
-        /* المحتوى الرئيسي */
-        #main-content { display: none; padding: 40px; max-width: 800px; margin: auto; animation: fadeIn 1s; }
-        .dept-logo { width: 120px; margin-bottom: 20px; }
-        .dept { margin-bottom: 20px; padding: 20px; background: white; border-right: 5px solid var(--accent); box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 10px; }
-        .dept button { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-        .hidden { display: none; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* كروت الأقسام الكبيرة */
+        .dept-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; transition: 0.4s; border-bottom: 5px solid var(--main); }
+        .dept-card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--red); }
+        .dept-card h3 { font-size: 1.4rem; color: var(--main); }
+
+        /* تفاصيل القسم المنبثقة */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 40px; border-radius: 20px; width: 80%; max-width: 600px; position: relative; }
+        .close { position: absolute; top: 10px; right: 20px; font-size: 2rem; cursor: pointer; color: var(--red); }
     </style>
 </head>
 <body>
 
-    <!-- Landing Page -->
-    <div id="landing">
-        <img src="https://i.imgur.com/your-logo-url.png" alt="Royal Gas Logo" class="logo"> <!-- ضع رابط اللوجو هنا -->
-        <h1>مرحباً بك في شركة رويال جاس</h1>
-        <p>نقدم لكم نظرة شاملة على الهيكل التنظيمي للشركة</p>
-        <button class="btn" onclick="showContent()">ابدأ الاستكشاف</button>
+    <!-- صفحة البداية -->
+    <div class="hero" id="landing">
+        <h1>رويال جاس - الهيكل التنظيمي</h1>
+        <button onclick="start()">استعرض الأقسام الآن</button>
     </div>
 
-    <!-- Main Content -->
-    <div id="main-content">
-        <img src="https://i.imgur.com/your-logo-url.png" alt="Royal Gas Logo" class="dept-logo">
-        <h1>الهيكل التنظيمي للأقسام</h1>
-        
-        <div class="dept">
-            <h2>قسم العمليات (Operations)</h2>
-            <button onclick="toggleDetails('ops')">إظهار التفاصيل</button>
-            <ul id="ops" class="hidden">
-                <li>التصنيع والدهانات</li><li>الصيانة</li><li>الطباعة</li><li>القوالب</li>
-            </ul>
+    <!-- المحتوى -->
+    <div id="departments">
+        <img src="https://i.imgur.com/your-logo.png" style="width:150px;">
+        <h2>أقسام الشركة الرئيسية</h2>
+        <div class="grid">
+            <div class="dept-card" onclick="openModal('العمليات', 'التصنيع، الصيانة، الطباعة، القوالب، الضغط، التجميع')"><h3>قسم العمليات</h3></div>
+            <div class="dept-card" onclick="openModal('سلسلة الإمداد', 'المشتريات، التخطيط، المخازن، اللوجستيات، MRP')"><h3>سلسلة الإمداد</h3></div>
+            <div class="dept-card" onclick="openModal('القسم الفني', 'البحث والتطوير، QHSE، QC، المختبر، التطوير')"><h3>القسم الفني</h3></div>
+            <div class="dept-card" onclick="openModal('القسم التجاري', 'التسويق، المبيعات، العلاقات العامة، التصدير')"><h3>القسم التجاري</h3></div>
+            <div class="dept-card" onclick="openModal('المالية', 'المحاسبة، الخزانة، الرواتب، التدقيق، الميزانية')"><h3>المالية</h3></div>
+            <div class="dept-card" onclick="openModal('الموارد البشرية', 'التوظيف، التدريب، الشؤون القانونية، شؤون الموظفين')"><h3>الموارد البشرية</h3></div>
         </div>
-        
-        <div class="dept">
-            <h2>قسم سلسلة الإمداد (Supply Chain)</h2>
-            <button onclick="toggleDetails('supply')">إظهار التفاصيل</button>
-            <ul id="supply" class="hidden">
-                <li>المشتريات</li><li>المخازن</li><li>اللوجستيات</li>
-            </ul>
+    </div>
+
+    <!-- نافذة التفاصيل -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-body" style="font-size: 1.2rem; line-height: 2;"></p>
         </div>
     </div>
 
     <script>
-        function showContent() {
-            document.getElementById('landing').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }
-        function toggleDetails(id) {
-            let el = document.getElementById(id);
-            el.classList.toggle('hidden');
-        }
+        function start() { document.getElementById('landing').style.display = 'none'; document.getElementById('departments').style.display = 'block'; }
+        function openModal(title, body) { document.getElementById('modal-title').innerText = title; document.getElementById('modal-body').innerText = body; document.getElementById('modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
     </script>
 </body>
 </html>
