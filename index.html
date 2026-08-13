@@ -75,7 +75,22 @@
 
     <!-- الشاشة الافتتاحية مع اللوجو وتأثير الانقسام -->
     <div class="hero" id="landing">
-        <img src="https://i.ibb.co/3069356/logo.jpg" alt="Royal Gas Logo" class="hero-logo" onerror="this.src='https://i.imgur.com/359020260.jpg'">
+        <!-- استخدام عنصر بديل يضمن ظهور اللوجو و اسم الشركة بشكل احترافي لو الصورة المحلية مشكلة -->
+        <div class="hero-logo" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 400 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <!-- التاج الأحمر والأشكال الزخرفية للأعلى -->
+                <path d="M200 20 C 215 10, 230 35, 200 50 C 170 35, 185 10, 200 20 Z" fill="#d32f2f"/>
+                <path d="M140 55 C 160 30, 200 70, 200 70 C 200 70, 240 30, 260 55 C 230 65, 215 50, 200 65 C 185 50, 170 65, 140 55 Z" fill="#d32f2f"/>
+                <!-- الخط المنحني العلوي -->
+                <path d="M45 65 Q 200 120 355 65" fill="none" stroke="#d32f2f" stroke-width="8"/>
+                <!-- كلمة ROYAL -->
+                <text x="50%" y="130" font-family="Times New Roman, serif" font-size="52" font-weight="bold" fill="#003366" text-anchor="middle" letter-spacing="6">ROYAL</text>
+                <!-- الخط المنحني السفلي -->
+                <path d="M35 150 Q 200 190 365 150" fill="none" stroke="#d32f2f" stroke-width="7"/>
+                <!-- كلمة GAS -->
+                <text x="50%" y="185" font-family="Times New Roman, serif" font-size="28" font-weight="bold" fill="#003366" text-anchor="middle" letter-spacing="4">GAS</text>
+            </svg>
+        </div>
         <h1 style="font-size: 2rem; margin-bottom: 30px;">الهيكل التنظيمي للشركة</h1>
         <button onclick="start()">استعرض الأقسام الآن</button>
     </div>
@@ -91,7 +106,7 @@
             <div class="dept-card" onclick="openModal('القسم التجاري', 'المدير: Commercial Manager', 'التسويق، الإبداع والتصميم، قنوات التواصل، المبيعات، التوزيع، الترويج، اللوجستيات، الاستيراد والتصدير، العلاقات العامة، السكرتارية.')"><h3>القسم التجاري</h3></div>
             <div class="dept-card" onclick="openModal('المالية', 'المدير: Finance Manager', 'المحاسبة، الخزينة، البنوك، العملاء، الموردون، الرواتب، التدقيق العام، الضرائب، محاسبة التكاليف، التخطيط والميزانية، CAPEX، OPEX، مراقبة المخزون.')"><h3>المالية</h3></div>
             <div class="dept-card" onclick="openModal('الموارد البشرية', 'المدير: HR Manager', 'الإدارة، النظافة، البوفيه، النقل، العمليات، إدارة المواهب، التدقيق الداخلي، شؤون الموظفين، الرواتب، التدريب، التوظيف، الشؤون القانونية.')"><h3>الموارد البشرية</h3></div>
-            <div class="dept-card" onclick="openModal('تكنولوجيا المعلومات', 'المدير: IT Manager', 'الدعم الفني، مكتب المساعدة، الشبكات والبنية التحتية، الأمن السيبراني، إدارة الخوادم، جدار الحماية، قواعد البيانات، تطوير البرمجيات، أمن السحابة، إدارة الموقع.')"><h3>تكنولوجيا المعلومات</h3></div>
+            <div class="dept-card" onclick="openCodeModal = openModal('تكنولوجيا المعلومات', 'المدير: IT Manager', 'الدعم الفني، مكتب المساعدة، الشبكات والبنية التحتية، الأمن السيبراني، إدارة الخوادم، جدار الحماية، قواعد البيانات، تطوير البرمجيات، أمن السحابة، إدارة الموقع.')"><h3>تكنولوجيا المعلومات</h3></div>
             <div class="dept-card" onclick="openModal('خدمات ما بعد البيع', 'المدير: After-Sales Manager', 'شكاوى العملاء، خدمة الصيانة، استبيان العملاء.')"><h3>ما بعد البيع</h3></div>
         </div>
     </div>
@@ -103,7 +118,7 @@
             <h2 id="modal-title" style="color: var(--main); margin-top: 0;"></h2>
             <p id="modal-manager" style="font-weight: bold; color: var(--red); font-size: 1.2rem;"></p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-            <p id="modal-body" style="font-size: 1.1.rem; line-height: 1.8; color: #444;"></p>
+            <p id="modal-body" style="font-size: 1.1rem; line-height: 1.8; color: #444;"></p>
         </div>
     </div>
 
